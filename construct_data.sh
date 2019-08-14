@@ -20,8 +20,10 @@ cat $SPLITS/test.splits  | xargs cat > test.data.txt
 
 
 echo "Step 3: Basic filtering on train/dev."
-python2.7 $SCRIPTS/filter.py train.data.txt > train.data.filter.txt
-python2.7 $SCRIPTS/filter.py valid.data.txt > valid.data.filter.txt
+# python2.7 $SCRIPTS/filter.py train.data.txt > train.data.filter.txt
+# python2.7 $SCRIPTS/filter.py valid.data.txt > valid.data.filter.txt
+cat train.data.txt > train.data.filter.txt
+cat valid.data.txt > valid.data.filter.txt
 
 
 echo "Step 4: Compile dictionary."
@@ -42,5 +44,5 @@ python2.7 $SCRIPTS/pull.py trg_lc $WORK/train.title.dict   < $WORK/test.data.txt
 python2.7 $SCRIPTS/pull.py src_lc $WORK/train.article.dict < $WORK/test.data.txt > $WORK/test.article.txt
 
 
-echo "Step 6: Constructing torch data files."
-bash $ABS/prep_torch_data.sh $WORK
+# echo "Step 6: Constructing torch data files."
+# bash $ABS/prep_torch_data.sh $WORK
